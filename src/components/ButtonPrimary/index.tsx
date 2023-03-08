@@ -4,8 +4,8 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
 }
 
-export const ButtonPrimary = ({ title }: IButtonProps) => {
+export const ButtonPrimary = (props: IButtonProps) => {
     return (
-        <Button>{title}</Button>
+        <Button {...props}>{props.title}</Button>
     )
 }

@@ -10,4 +10,9 @@ export const Button = styled.button`
     color: #FFFFFF;
     padding: 8px 68px;
     border: none;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
 `;
