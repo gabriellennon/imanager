@@ -1,0 +1,28 @@
+{
+    "login": {
+        "name": "Gabriel Lennon",
+        "imageUser": "https://github.com/gabriellennon.png",
+        "emailUser": "gabriellennon@teste.com"
+    },
+    "sales": [
+        {
+            "id": 331,
+            "create_at": "Sun Mar 12 2023 13:06:58 GMT-0300",
+            "product": "Motor",
+            "product_id": 123,
+            "seller_id": 0,
+            "value": 400,
+            "payment_form": "credit"
+        }
+    ],
+    "sallers": [
+        {
+            "id": 0,
+            "name": "Gabriel Lennon"
+        },
+        {
+            "id": 1,
+            "name": "Lucas Silva"
+        }
+    ]
+}

@@ -13,15 +13,15 @@ import {
 export function Home() {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const infoUserStorage = localStorage.getItem('@userInformationAccount');
+    // useEffect(() => {
+    //     const infoUserStorage = localStorage.getItem('@userInformationAccount');
 
-        if(infoUserStorage){
-            console.log(infoUserStorage)
-        } else {
-            navigate('/login')
-        }
-    },[])
+    //     if(infoUserStorage){
+    //         console.log(infoUserStorage)
+    //     } else {
+    //         navigate('/login')
+    //     }
+    // },[])
 
     return (
         <>
