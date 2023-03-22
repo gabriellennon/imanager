@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { House, CurrencyCircleDollar, Package  } from '@phosphor-icons/react';
 import LogoPng from '../../assets/icons/logo.png'
+import UserSvg from '../../assets/icons/user.svg'
 import {
     HeaderNav,
     ContentLinks,
@@ -8,7 +9,11 @@ import {
     LogoIManager
 } from './styles';
 
-export const NavBar = () => {
+type INavBarProps = {
+    urlImage?: string;
+}
+
+export const NavBar = ({ urlImage }: INavBarProps) => {
     return (
         <HeaderNav>
             <ContentLinks>
@@ -29,7 +34,7 @@ export const NavBar = () => {
                 </nav>
             </ContentLinks>
             <ContentImageUser>
-                <img src="https://github.com/gabriellennon.png" alt="" />
+                <img src={urlImage ? urlImage : UserSvg} alt="foto do usuário" />
             </ContentImageUser>
         </HeaderNav>
     )

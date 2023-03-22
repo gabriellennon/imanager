@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { NavBar } from '../../components/NavBar';
 import { cardsHome } from '../../utils/dataCard';
+import { IUserInfo, IUserReducer } from '../../utils/types';
 
 import {
     ContainerHome,
@@ -12,23 +14,37 @@ import {
 
 export function Home() {
     const navigate = useNavigate();
+    const [userInfo, setUserInfo] = useState<IUserInfo>()
 
-    // useEffect(() => {
-    //     const infoUserStorage = localStorage.getItem('@userInformationAccount');
+    // CASO QUEIRA RECUPERAR O STATE DO REDUX
+    // const userInfos = useSelector((state: IUserReducer) => state.userReduce)
+    // console.log(userInfos);
 
-    //     if(infoUserStorage){
-    //         console.log(infoUserStorage)
-    //     } else {
-    //         navigate('/login')
-    //     }
-    // },[])
+    function splitName(name: string | undefined) {
+        if(name){
+            const nameFormated = name.split(' ')
+            return nameFormated[0];
+        } else {
+            return '';
+        }
+    }
+
+    useEffect(() => {
+        const infoUserStorage = localStorage.getItem('@userInformationAccount');
+
+        if(infoUserStorage){
+            setUserInfo(JSON.parse(infoUserStorage))
+        } else {
+            navigate('/login')
+        }
+    },[])
 
     return (
         <>
-            <NavBar />
+            <NavBar urlImage={userInfo?.imageUser} />
             <ContainerHome>
                 <ContentTitle>
-                    <h1>Olá, Gabriel</h1>
+                    <h1>Olá, {splitName(userInfo?.name)}</h1>
                     <p>O que deseja acessar? Escolha abaixo</p>
                 </ContentTitle>
                 <ContentBody>

@@ -19,6 +19,7 @@ import { login } from '../../services/login.service';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/modules/user/reducer';
+import toast, { Toaster } from 'react-hot-toast';
 
 // Tipagem do nosso formulário
 type LoginFormInputs = z.infer<typeof loginFormSchema>
@@ -26,7 +27,7 @@ type LoginFormInputs = z.infer<typeof loginFormSchema>
 export function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     // FORMA 1 DE FAZER FORMULÁRIO
     // const [emailUser, setEmailUser] = useState('');
@@ -53,6 +54,7 @@ export function Login() {
 
     // FORMA 2 DE FAZER FORMULÁRIO
     async function handleSubmitLogin(data: LoginFormInputs) {
+        setLoading(true)
         // FORMA 1
         // try {
         //     // const response = await login();
@@ -70,7 +72,9 @@ export function Login() {
             navigate('/');
         })
         .catch((error) => {
+            toast.error("Algo deu errado, tente entrar novamente.")
             console.log(error)
+            setLoading(false)
         })
     }
 
@@ -108,6 +112,10 @@ export function Login() {
                     </ContainerButtons>
                 </FormLogin>
             </ContainerFormLogin>
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
         </ContainerHome>
     )
 }

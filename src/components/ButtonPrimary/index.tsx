@@ -1,4 +1,5 @@
 import { Button } from "./styles"
+import ClipLoader from "react-spinners/ClipLoader";
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
@@ -7,6 +8,6 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const ButtonPrimary = (props: IButtonProps) => {
     return (
-        <Button {...props}>{props.isLoading ? <>carregando</> : props.title}</Button>
+        <Button {...props}>{props.isLoading ? <ClipLoader color="#FFF" loading={props.isLoading} size={12} /> : props.title}</Button>
     )
 }
