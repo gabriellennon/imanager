@@ -94,12 +94,13 @@ export function Login() {
                         <input 
                             type="text" 
                             {...register('email')}
+                            data-testid="input-email"
                         />
                     </ContainerInput>
                     <ContainerInput>
                         <label>Senha</label>
                         {/* <input type="password" onChange={e => setPasswordUser(e.target.value)} value={passwordUser} /> */}
-                        <input type="password" {...register('password')} />
+                        <input type="password" {...register('password')}  data-testid="input-password" />
                     </ContainerInput>
                     <ContainerButtons>
                         <ButtonPrimary 
